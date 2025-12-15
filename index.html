@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title> LEARN.LEAD.LIVE </title>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1> LEARN.LEAD.LIVE </h1>
+            <p>Powered by Clickyye Pvt Ltd.</p>
+        </div>
+
+        <div class="main-content">
+            <div class="chat-section">
+                <div class="chat-history" id="chatHistory">
+                    <div class="message ai-message">
+                        <strong></strong> Hello!
+                    </div>
+                </div>
+
+                <div class="loading" id="loading">
+                    <div class="spinner"></div>
+                    <span>Generating response...</span>
+                </div>
+
+                <div class="input-section">
+                    <textarea 
+                        id="userInput" 
+                        placeholder="Type your message here..."
+                        onkeydown="handleKeyDown(event)"
+                    ></textarea>
+                    <button onclick="sendMessage()" id="sendBtn">💡</button>
+                </div>
+            </div>
+
+            <div class="sidebar">
+                <h3>⚙️ Settings</h3>
+
+                <div class="form-group">
+                    <label for="modelSelect">Model:</label>
+                    <select id="modelSelect">
+                        <option value="llama3.2:1b">Fast</option>
+                        <option value="llama3.2:3b">Balanced</option>
+                        <option value="llama3.2:11b">Best</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="temperature">Temperature: <span id="tempValue">0.7</span></label>
+                    <input 
+                        type="range" 
+                        id="temperature" 
+                        min="0.1" 
+                        max="2.0" 
+                        step="0.1" 
+                        value="0.7"
+                        oninput="updateTempValue(this.value)"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="maxTokens">Max Tokens: <span id="tokensValue">500</span></label>
+                    <input 
+                        type="range" 
+                        id="maxTokens" 
+                        min="50" 
+                        max="2000" 
+                        step="50" 
+                        value="500"
+                        oninput="updateTokensValue(this.value)"
+                    >
+                </div>
+
+                <div class="form-group">
+                    <label for="systemPrompt">System Prompt:</label>
+                    <textarea 
+                        id="systemPrompt" 
+                        rows="3"
+                        placeholder="You are a helpful AI assistant..."
+                    >You are a helpful AI assistant. Provide clear, accurate, and comprehensive responses.</textarea>
+                </div>
+
+                <button onclick="clearChat()" style="width: 100%; padding: 10px; background: #dc3545; color: white; border: none; border-radius: 8px; cursor: pointer; margin-bottom: 20px;">
+                    Clear Chat
+                </button>
+
+                <div class="quick-prompts">
+                    <h3> Quick Prompts</h3>
+                    <button class="prompt-btn" onclick="setPrompt('Write a short story about a robot learning to paint')">
+                         Creative Story
+                    </button>
+                    <button class="prompt-btn" onclick="setPrompt('Explain quantum computing in simple terms')">
+                         Science Explanation
+                    </button>
+                    <button class="prompt-btn" onclick="setPrompt('Write a Python function to calculate fibonacci numbers')">
+                         Code Generation
+                    </button>
+                    <button class="prompt-btn" onclick="setPrompt('Summarize the benefits of renewable energy')">
+                         Summarization
+                    </button>
+                    <button class="prompt-btn" onclick="setPrompt('Help me plan a 3-day trip to Tokyo')">
+                         Travel Planning
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
